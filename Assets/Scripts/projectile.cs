@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class projectile : MonoBehaviour
 {
@@ -19,7 +20,16 @@ public class projectile : MonoBehaviour
     //if(other.tag == gameObject.tag)
       if(other.tag == gameObject.tag)
       {
-         score.IncreaseScore(5);
+       Destroy(other.gameObject);
+       Destroy(gameObject);
+      }
+       else
+       {
+           //Destroy(other.gameObject);
+           //Destroy(gameObject);
        }
-    }*/
-}
+
+         //score.IncreaseScore(5);
+      }*/
+    }
+

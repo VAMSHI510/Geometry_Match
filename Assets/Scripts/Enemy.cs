@@ -1,3 +1,5 @@
+
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
@@ -8,72 +10,49 @@ using UnityEngine.SceneManagement;
 
 public class Enemy : MonoBehaviour
 {
-   public float speed;
-   //public Score score;
-    public Text EScore;
-  public static int Score = 0;
-  // private Text Score;
-   //private int score = 0;
+     public float speed;
+    // public Singleton scoreText;
     
     void Awake()
     {
-      EScore = GetComponent<Text>();
+       //scoreText= GameObject.Find("Score").GetComponent<Singleton>(); // finding the GameObject Score (which is there in this project) By using the script called Singleton;
+        //Singleton.instance.play();
     }
-    // Update is called once per frame
-    void Update()
-    {
-       transform.Translate(Vector2.left * speed * Time.deltaTime);  
-    }
-    private void OnTriggerEnter2D(Collider2D other)
+     private void Start()
      {
-       /*if(other.CompareTag("Player"))
+      Singleton.instance.play();
+       
+     }
+    // Update is called once per frame
+     void Update()
+     {
+       transform.Translate(Vector2.left * speed * Time.deltaTime); 
+      
+
+     }
+     private void OnTriggerEnter2D(Collider2D other)
+     {
+       if(other.CompareTag("Man"))
        {
-           //score.IncreaseScore(5);
-           SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-           //Score.score+=10;
+           Destroy(gameObject);
+           SceneManager.LoadScene("PlayAgain");
            Debug.Log("projectile died");
-       }*/
-    //if(other.tag == gameObject.tag)
-      if(other.tag == gameObject.tag)
-      {
+       }
+        if(gameObject.tag == other.tag)
+        {
+           
+        Destroy(other.gameObject);
+        Destroy(gameObject);
+        //scoreText.play();
+
+        }
+        else
+        {
           Destroy(other.gameObject);
           Destroy(gameObject);
-          Score+=10;
-          
-          //score.IncreaseScore(5);
-          //Score=Score+5;
-      }
-    else
-    {
-        //Score.score+=10;
-        Debug.Log("geometry died");
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        
+          Debug.Log("geometry died");
+          SceneManager.LoadScene("PlayAgain");
     }
-
-   
-    }
-     /* if(other.tag == other.tag||gameObject.tag == gameObject.tag)
-      {
-          Destroy(other.gameObject);
-          Destroy(gameObject);
-          //Score.score+=10;
-
-      }/*
-      
-    
-    /*private void OnCollisionEnter2D(Collision2D collision)
-    {
-      
-       if(collision.gameObject.GetComponent<projectile>() != null )
-       {
-         // Destroy(other.gameObject);
-          Destroy(gameObject);
-          //Score.score+=10;
-          
-          //score.IncreaseScore(5);
-          //Score=Score+5;
-         }
-   }*/  
- }
+  }
+}     
 
