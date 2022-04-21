@@ -7,6 +7,8 @@ TagManager:
   - Triangle
   - Square
   - Circle
+  - Man
+  - Menu
   layers:
   - Default
   - TransparentFX

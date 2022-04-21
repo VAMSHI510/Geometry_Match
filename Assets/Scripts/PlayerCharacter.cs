@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerCharacter : MonoBehaviour
 {
@@ -21,7 +22,9 @@ public class PlayerCharacter : MonoBehaviour
         {
             Instantiate(projectiles[2], transform.position, Quaternion.identity);
         } 
-        
-
+         /*else if(Input.GetKeyDown(KeyCode.Escape))
+        {
+          SceneManager.LoadScene("PlayAgain");
+        }*/
     }
 }
